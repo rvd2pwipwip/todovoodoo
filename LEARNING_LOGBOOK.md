@@ -148,4 +148,111 @@ export default App;
 
 ---
 
+## Step 4: Setting Up Version Control with Git and GitHub
+
+**What I Learned**: How to initialize a Git repository and connect it to GitHub for version control
+
+**The Process**:
+
+```bash
+git init                    # Initialize local Git repository
+git status                  # Check which files are ready to track
+git add .                   # Stage all files for commit
+git commit -m "Initial project setup with clean Vite React template"
+git remote add origin https://github.com/rvd2pwipwip/todovoodoo.git
+git branch -M main          # Ensure main branch is set
+git push -u origin main     # Push to GitHub and set upstream
+```
+
+**What This Accomplished**:
+
+- Created local Git repository to track code changes
+- Made initial commit with clean project foundation
+- Connected local repository to GitHub remote
+- Published project publicly for backup and collaboration
+
+**Key Git Concepts**:
+
+- **Repository**: A project folder tracked by Git
+- **Staging**: Preparing files for commit with `git add`
+- **Commit**: Saving a snapshot of your code with a message
+- **Remote**: Connection to external repository (GitHub)
+- **Push**: Uploading local commits to remote repository
+
+**Why Version Control Now?**:
+
+- Established clean foundation worth preserving
+- Safety net before adding complex features
+- Good practice to commit working states
+- Enables tracking of learning progress through commits
+
+**GitHub Repository**: [https://github.com/rvd2pwipwip/todovoodoo](https://github.com/rvd2pwipwip/todovoodoo)
+
+**Key Concept**: Version control provides safety and history tracking - commit early and often, especially after completing working features.
+
+---
+
+## Step 5: Planning React Component Architecture
+
+**What I Learned**: How to translate existing vanilla JS application structure into a React component hierarchy
+
+**My Vanilla JS Foundation**:
+I already built this todo app using vanilla JavaScript with modular architecture:
+
+- **Services**: `projectManager.js`, `taskManager.js` (business logic)
+- **Components**: UI components for dialogs and display
+- **Utils**: Helper functions for dates, state management
+- **Clear separation**: Logic separated from DOM manipulation
+
+**Vanilla JS References**:
+
+- **Original Assignment**: [The Odin Project - Todo List](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)
+- **GitHub Repository**: [https://github.com/rvd2pwipwip/odin-todo-list](https://github.com/rvd2pwipwip/odin-todo-list)
+- **Live Demo**: [https://rvd2pwipwip.github.io/odin-todo-list/](https://rvd2pwipwip.github.io/odin-todo-list/)
+
+**React Component Hierarchy**:
+
+```
+App
+├── Sidebar
+│   ├── Navigation
+│   │   ├── FilterTabs (All, Today, 7 days)
+│   │   └── ProjectList
+│   │       └── ProjectTab (with edit/delete actions)
+│   └── AddProjectButton
+├── MainContent
+│   ├── Header (dynamic title)
+│   ├── TaskList
+│   │   ├── TaskCard (checkbox, title, info, date, delete)
+│   │   └── EmptyProject (when no tasks)
+│   └── AddTaskButton
+└── DialogContainer
+    ├── AddTaskDialog
+    ├── EditTaskDialog
+    ├── TaskInfoDialog
+    └── ProjectDialog (add/delete)
+```
+
+**Key Mappings from Vanilla JS to React**:
+
+- `script.js` → `App.jsx` (main orchestrator)
+- `projectUI.js` → `ProjectList.jsx`, `ProjectTab.jsx`
+- `taskUI.js` → `TaskList.jsx`, `TaskCard.jsx`
+- `*Dialog.js` → React dialog components
+- Services layer → Can mostly stay the same!
+
+**React Development Strategy**:
+
+1. **Start with static components** - Build UI structure without interactivity
+2. **Add props** - Make components reusable with data
+3. **Add state management** - Replace DOM manipulation with React state
+4. **Integrate existing services** - Reuse business logic from vanilla JS version
+
+**Learning Advantage**:
+Having a working vanilla JS version means I understand the problem domain and user experience requirements. Now I'm learning how React solves the same problems with different patterns.
+
+**Key Concept**: Component hierarchy planning helps organize React applications into manageable, reusable pieces that map to real UI sections and user interactions.
+
+---
+
 _Next steps will be documented after implementation..._
