@@ -255,4 +255,56 @@ Having a working vanilla JS version means I understand the problem domain and us
 
 ---
 
+## Step 6: Building First React Component with Props
+
+**What I Learned**: How to create reusable React components that accept and display dynamic data through props
+
+**Component Created**: `TaskCard.jsx`
+
+```jsx
+const TaskCard = ({ title, dueDate, priority, done }) => {
+  return (
+    <div>
+      <h3>{title}</h3>
+      <p>{dueDate}</p>
+      <p>{priority}</p>
+      <p>{done}</p>
+    </div>
+  );
+};
+
+export default TaskCard;
+```
+
+**Using the Component in App.jsx**:
+
+```jsx
+<TaskCard title="Task 1" dueDate="2025-01-01" priority="High" done={false} />
+```
+
+**Key React Concepts Learned**:
+
+- **Props**: How components receive data from their parent
+- **Destructuring Props**: Clean syntax `({ title, dueDate, priority, done })`
+- **JSX Expressions**: Using `{variable}` to display dynamic content
+- **Component Reusability**: Same component with different data
+- **Data Types in Props**: Strings, booleans, and proper JSX syntax for each
+
+**What This Demonstrates**:
+
+- Component accepts data instead of hard-coding it
+- Same component renders differently based on props
+- Clean separation between component logic and data
+- Foundation for building dynamic, data-driven UIs
+
+**Bottom-Up Approach Benefits**:
+
+- Immediate visual feedback with working component
+- Learning core React concepts in isolation
+- Understanding props before tackling complex layouts
+
+**Key Concept**: Props make React components reusable and dynamic - they're like function parameters but for UI components.
+
+---
+
 _Next steps will be documented after implementation..._
