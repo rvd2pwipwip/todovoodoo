@@ -1,0 +1,74 @@
+.task-card {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 5px solid var(--accent-color);
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.task-card .material-icons-rounded {
+  opacity: 0.5;
+}
+
+.task-card .material-icons-rounded:hover {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.priority-high {
+  border-left-color: var(--high-priority);
+  background: var(--high-priority-bg);
+}
+
+.priority-high:hover {
+  background: var(--high-priority-hover);
+}
+
+.priority-medium {
+  border-left-color: var(--medium-priority);
+  background: var(--medium-priority-bg);
+}
+
+.priority-medium:hover {
+  background: var(--medium-priority-hover);
+}
+
+.priority-low {
+  border-left-color: var(--low-priority);
+  background: var(--low-priority-bg);
+}
+
+.priority-low:hover {
+  background: var(--low-priority-hover);
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: larger;
+  cursor: pointer;
+  gap: 0.5rem;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+label.done {
+  opacity: 0.33;
+}
+
+label.done .task-title {
+  text-decoration: line-through;
+}

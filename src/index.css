@@ -129,3 +129,46 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+:root {
+  --accent-color: #0070e0;
+  --low-priority: #89bb40;
+  --medium-priority: #f1a74e;
+  --high-priority: #ec1a2b;
+  --low-priority-bg: #89bb4020;
+  --medium-priority-bg: #f1a74e20;
+  --high-priority-bg: #ec1a2b20;
+  --low-priority-hover: #89bb4033;
+  --medium-priority-hover: #f1a74e33;
+  --high-priority-hover: #ec1a2b33;
+  --bckg: #fafafa;
+  --bckg2: #e8e8e8;
+  --onBckg: #191919;
+  --side-nav-width: 24vw;
+  --form-padding: 4vw;
+}
+
+/*********************************************************/
+/* Material Icons */
+/*********************************************************/
+
+@font-face {
+  font-family: "Material Icons Rounded";
+  /* font-weight: bold; */
+  font-style: normal;
+  src: url("./assets/fonts/MaterialIconsRound-Regular.otf") format("opentype");
+}
+
+.material-icons-rounded {
+  font-family: "Material Icons Rounded";
+  /* font-weight: normal; */
+  font-style: normal;
+  font-size: 2rem; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}

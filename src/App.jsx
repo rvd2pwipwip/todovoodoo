@@ -5,18 +5,21 @@ function App() {
     <>
       <h1>TODO VOODOO</h1>
       <TaskCard
+        id="1"
         title="Task 1"
         dueDate="2025-01-01"
         priority="High"
-        done={false}
+        done={true}
       />
       <TaskCard
+        id="2"
         title="Task 2"
         dueDate="2025-01-02"
         priority="Medium"
         done={false}
       />
       <TaskCard
+        id="3"
         title="Task 3"
         dueDate="2025-01-03"
         priority="Low"
