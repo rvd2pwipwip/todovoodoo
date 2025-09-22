@@ -307,4 +307,51 @@ export default TaskCard;
 
 ---
 
+## Step 7: Adding Comprehensive TaskCard Styling
+
+**What I Learned**: How to style React components with CSS, handle dynamic classes, and organize assets properly
+
+**Styling Implemented**:
+
+- **Priority-based color coding** using CSS custom properties (--high-priority, --medium-priority, --low-priority)
+- **Material Icons integration** for task completion status (check_circle/radio_button_unchecked)
+- **Dynamic CSS classes** based on component props (`priority-${priority.toLowerCase()}`)
+- **Completed task styling** with opacity and line-through text decoration
+- **Hover effects** for better user interaction feedback
+- **Responsive layout** with flexbox and proper box-sizing
+
+**Material Icons Setup**:
+
+```css
+@font-face {
+  font-family: "Material Icons Rounded";
+  font-style: normal;
+  src: url("./assets/fonts/MaterialIconsRound-Regular.otf") format("opentype");
+}
+```
+
+**Key CSS Techniques Learned**:
+
+- **CSS Custom Properties** for consistent theming
+- **Dynamic className** generation in JSX: `className={`task-card priority-${priority.toLowerCase()}`}`
+- **Conditional styling** for completed tasks
+- **Box-sizing: border-box** to prevent layout overflow
+- **Organized asset structure** (fonts in `src/assets/fonts/`)
+
+**CSS Architecture**:
+
+- Component-specific CSS files (`TaskCard.css`)
+- Global styles and variables in `index.css`
+- Clean separation between layout and component styling
+
+**React + CSS Integration**:
+
+- Using `className` instead of `class`
+- Importing CSS files into components
+- Conditional class application based on props
+
+**Key Concept**: React styling combines the power of dynamic JavaScript with CSS, allowing components to adapt their appearance based on data while maintaining clean separation of concerns.
+
+---
+
 _Next steps will be documented after implementation..._

@@ -1,0 +1,77 @@
+nav button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  padding: 0.5rem;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+  gap: 0.625rem;
+  border-radius: 0.5rem;
+  justify-content: flex-start;
+
+  /* Add transition for smooth background change */
+  transition: background-color 0.3s ease;
+}
+
+nav button:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+nav button[aria-selected="true"] {
+  color: var(--accent-color);
+  background: rgba(0, 0, 0, 0.05);
+  border-left: 5px solid var(--accent-color);
+}
+
+nav button > .project-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.3rem;
+
+  /* Hide actions by default */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+nav button:hover > .project-actions {
+  /* Show actions on button hover */
+  opacity: 1;
+  visibility: visible;
+}
+
+nav button > .project-actions {
+  margin-left: auto; /* Push the actions div to the right */
+  display: flex;
+}
+
+/* Reset button styling for action buttons */
+.action-button {
+  /* Complete button reset */
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.action-button:hover {
+  background: none;
+}
+
+/* Style the icons inside action buttons */
+.action-button .material-icons-rounded {
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.3);
+  transition: color 0.2s ease;
+}
+
+/* Hover effects on the icon, not the button */
+.action-button:hover .material-icons-rounded {
+  color: var(--accent-color);
+}
