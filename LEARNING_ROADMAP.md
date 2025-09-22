@@ -2,14 +2,14 @@
 
 ## Phase 1: Project Setup & Foundation
 
-- [ ] Set up React development environment
-- [ ] Understand project structure
-- [ ] Create basic component structure
-- [ ] Learn about JSX and component rendering
+- [x] Set up React development environment
+- [x] Understand project structure
+- [x] Create basic component structure
+- [x] Learn about JSX and component rendering
 
 ## Phase 2: Basic Todo Functionality
 
-- [ ] Create todo item component
+- [x] Create todo item component
 - [ ] Implement state management with useState
 - [ ] Add new todo functionality
 - [ ] Display list of todos
@@ -19,13 +19,13 @@
 - [ ] Mark todos as complete/incomplete
 - [ ] Delete todos
 - [ ] Edit existing todos
-- [ ] Filter todos (all/active/completed)
+- [x] Filter todos (all/active/completed)
 
 ## Phase 4: Enhanced User Experience
 
-- [ ] Add styling and responsive design
+- [x] Add styling and responsive design
 - [ ] Implement local storage persistence
-- [ ] Add animations and transitions
+- [x] Add animations and transitions
 - [ ] Form validation and error handling
 
 ## Phase 5: Advanced React Concepts
@@ -37,20 +37,20 @@
 
 ## Key React Concepts to Learn
 
-- Components and JSX
-- Props and state
-- Event handling
-- Conditional rendering
-- Lists and keys
-- Forms and controlled components
-- Effect hook for side effects
-- Component lifecycle concepts
+- [x] Components and JSX
+- [x] Props and state
+- [x] Event handling
+- [x] Conditional rendering
+- [ ] Lists and keys
+- [ ] Forms and controlled components
+- [ ] Effect hook for side effects
+- [ ] Component lifecycle concepts
 
 ## Best Practices to Cover
 
-- Component organization
-- Naming conventions
-- Code splitting
-- Error boundaries
-- Accessibility considerations
-- Testing fundamentals
+- [x] Component organization
+- [x] Naming conventions
+- [ ] Code splitting
+- [ ] Error boundaries
+- [x] Accessibility considerations
+- [ ] Testing fundamentals

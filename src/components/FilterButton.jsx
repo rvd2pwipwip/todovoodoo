@@ -24,20 +24,44 @@ const FilterButton = ({
         <span>{label}</span>
         {type === "project" && (
           <div className="project-actions">
-            <button
+            <span
               className="action-button edit"
-              onClick={onEdit}
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit(id);
+              }}
+              role="button"
+              tabIndex={0}
               aria-label="Edit project"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onEdit(id);
+                }
+              }}
             >
               <span className="material-icons-rounded">edit</span>
-            </button>
-            <button
+            </span>
+            <span
               className="action-button delete"
-              onClick={onDelete}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete(id);
+              }}
+              role="button"
+              tabIndex={0}
               aria-label="Delete project"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onDelete(id);
+                }
+              }}
             >
               <span className="material-icons-rounded">delete</span>
-            </button>
+            </span>
           </div>
         )}
       </button>

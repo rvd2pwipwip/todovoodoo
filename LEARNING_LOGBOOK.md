@@ -354,4 +354,111 @@ export default TaskCard;
 
 ---
 
+## Step 8: Building Flexible FilterButton Component with Navigation
+
+**What I Learned**: How to create flexible React components with conditional rendering, proper accessibility, and semantic HTML structure
+
+**Component Architecture Decision**:
+Instead of creating separate components for filters and projects, I built one flexible `FilterButton` component that handles both use cases through props and conditional rendering.
+
+**Component Implementation**:
+
+```jsx
+const FilterButton = ({
+  id,
+  icon,
+  label,
+  isActive,
+  onClick,
+  type = "filter", // "filter" or "project"
+  onEdit, // Only for projects
+  onDelete, // Only for projects
+}) => {
+  return (
+    <button
+      id={id}
+      onClick={onClick}
+      role="tab"
+      aria-selected={isActive}
+      aria-controls={id}
+    >
+      <span className="material-icons-rounded">{icon}</span>
+      <span>{label}</span>
+
+      {type === "project" && (
+        <div className="project-actions">
+          <button
+            className="action-button edit"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(id);
+            }}
+          >
+            <span className="material-icons-rounded">edit</span>
+          </button>
+          <button
+            className="action-button delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(id);
+            }}
+          >
+            <span className="material-icons-rounded">delete</span>
+          </button>
+        </div>
+      )}
+    </button>
+  );
+};
+```
+
+**Key React Patterns Learned**:
+
+- **Conditional Rendering**: `{type === "project" && ...}` to show/hide project actions
+- **Event Propagation**: `e.stopPropagation()` to prevent parent click events
+- **Prop Composition**: Optional props (`onEdit`, `onDelete`) for extended functionality
+- **Component Flexibility**: One component serving multiple use cases
+
+**Accessibility Implementation**:
+
+- **Semantic HTML**: Using `<button>` elements for all interactive elements
+- **ARIA Attributes**: `role="tab"`, `aria-selected`, `aria-controls` for navigation semantics
+- **Screen Reader Support**: `aria-label` for action buttons
+- **Keyboard Navigation**: Native button behavior for Tab, Enter, Space
+
+**CSS Techniques Mastered**:
+
+- **Attribute Selectors**: `nav button[aria-selected="true"]` for active state styling
+- **Button Reset Styling**: `all: unset` to remove default button appearance for action icons
+- **Hover State Management**: Show/hide project actions on parent hover
+- **CSS Specificity**: Overriding Material Icons font-size with targeted selectors
+
+**Navigation Structure**:
+
+```jsx
+<nav className="sidebar" role="tablist">
+  <FilterButton id="all" icon="inbox" label="All tasks" type="filter" />
+  <FilterButton id="today" icon="today" label="Today" type="filter" />
+  <FilterButton
+    id="project-1"
+    icon="domain_verification"
+    label="My Project"
+    type="project"
+    onEdit={handleEdit}
+    onDelete={handleDelete}
+  />
+</nav>
+```
+
+**Design Decision Rationale**:
+
+- **DRY Principle**: Avoided code duplication between similar components
+- **Maintainability**: Single component to update and test
+- **Consistency**: Same behavior and styling patterns across navigation
+- **Scalability**: Easy to add new button types or features
+
+**Key Concept**: Flexible component design with conditional rendering allows for reusable components that adapt to different use cases while maintaining consistency and reducing code duplication.
+
+---
+
 _Next steps will be documented after implementation..._
