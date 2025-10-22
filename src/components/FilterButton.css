@@ -37,8 +37,9 @@ nav button > .project-actions {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-nav button:hover > .project-actions {
-  /* Show actions on button hover */
+/* Show actions on hover OR keyboard focus */
+nav button:hover > .project-actions,
+nav button:focus-within > .project-actions {
   opacity: 1;
   visibility: visible;
 }

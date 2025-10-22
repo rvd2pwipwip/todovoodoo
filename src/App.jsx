@@ -1,7 +1,12 @@
+import { useState } from "react";
+import todoData from "../todoDB.json";
 import TaskCard from "./components/TaskCard";
 import FilterButton from "./components/FilterButton";
 
 function App() {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [tasks] = useState(todoData.projects[0].tasks);
+
   return (
     <>
       <header id="app-header">
@@ -13,22 +18,22 @@ function App() {
             id="all"
             icon="inbox"
             label="All tasks"
-            isActive={true}
-            onClick={() => {}}
+            isActive={activeFilter === "all"}
+            onClick={() => setActiveFilter("all")}
           />
           <FilterButton
             id="today"
             icon="today"
             label="Today"
-            isActive={false}
-            onClick={() => {}}
+            isActive={activeFilter === "today"}
+            onClick={() => setActiveFilter("today")}
           />
           <FilterButton
             id="7days"
             icon="date_range"
             label="7 days"
-            isActive={false}
-            onClick={() => {}}
+            isActive={activeFilter === "7days"}
+            onClick={() => setActiveFilter("7days")}
           />
           <FilterButton
             id="project"
@@ -42,27 +47,16 @@ function App() {
           />
         </nav>
         <main className="main-content">
-          <TaskCard
-            id="1"
-            title="Task 1"
-            dueDate="2025-01-01"
-            priority="High"
-            done={true}
-          />
-          <TaskCard
-            id="2"
-            title="Task 2"
-            dueDate="2025-01-02"
-            priority="Medium"
-            done={false}
-          />
-          <TaskCard
-            id="3"
-            title="Task 3"
-            dueDate="2025-01-03"
-            priority="Low"
-            done={false}
-          />
+          {tasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              dueDate={task.dueDate}
+              priority={task.priority}
+              done={task.done}
+            />
+          ))}
         </main>
       </div>
     </>

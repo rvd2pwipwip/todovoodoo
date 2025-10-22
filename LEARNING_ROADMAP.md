@@ -10,9 +10,9 @@
 ## Phase 2: Basic Todo Functionality
 
 - [x] Create todo item component
-- [ ] Implement state management with useState
+- [x] Implement state management with useState
 - [ ] Add new todo functionality
-- [ ] Display list of todos
+- [x] Display list of todos
 
 ## Phase 3: Interactive Features
 
@@ -41,7 +41,7 @@
 - [x] Props and state
 - [x] Event handling
 - [x] Conditional rendering
-- [ ] Lists and keys
+- [x] Lists and keys
 - [ ] Forms and controlled components
 - [ ] Effect hook for side effects
 - [ ] Component lifecycle concepts
