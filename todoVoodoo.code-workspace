@@ -6,25 +6,5 @@
     {
       "path": "../odin/odin-todo-list"
     }
-  ],
-  "settings": {
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    },
-    "editor.suggest.enabled": false,
-    "editor.suggestOnTriggerCharacters": false,
-    "editor.acceptSuggestionOnEnter": "off",
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.tabCompletion": "off",
-    "editor.wordBasedSuggestions": "off",
-    "editor.parameterHints.enabled": false,
-    "editor.hover.enabled": false,
-    "typescript.suggest.enabled": false,
-    "javascript.suggest.enabled": false,
-    "github.copilot.enable": {
-      "*": false
-    }
-  }
+  ]
 }

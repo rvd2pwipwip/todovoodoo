@@ -19,7 +19,7 @@
 - [ ] Mark todos as complete/incomplete
 - [ ] Delete todos
 - [ ] Edit existing todos
-- [x] Filter todos (all/active/completed)
+- [x] Filter todos (all/today/7days) - time-based filtering complete
 
 ## Phase 4: Enhanced User Experience
 

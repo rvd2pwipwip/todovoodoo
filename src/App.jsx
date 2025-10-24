@@ -2,10 +2,27 @@ import { useState } from "react";
 import todoData from "../todoDB.json";
 import TaskCard from "./components/TaskCard";
 import FilterButton from "./components/FilterButton";
+import { getTodayDateFormatted, getWeekDateRange } from "./utils/dateUtils.js";
 
 function App() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [projects] = useState(todoData.projects);
   const [tasks] = useState(todoData.projects[0].tasks);
+
+  let filteredTasks = [];
+
+  if (activeFilter === "all") {
+    filteredTasks = tasks;
+  }
+
+  if (activeFilter === "today") {
+    filteredTasks = tasks.filter((t) => t.dueDate === getTodayDateFormatted());
+  }
+
+  if (activeFilter === "7days") {
+    const { start, end } = getWeekDateRange();
+    filteredTasks = tasks.filter((t) => t.dueDate >= start && t.dueDate <= end);
+  }
 
   return (
     <>
@@ -35,19 +52,28 @@ function App() {
             isActive={activeFilter === "7days"}
             onClick={() => setActiveFilter("7days")}
           />
-          <FilterButton
-            id="project"
-            icon="domain_verification"
-            label="Project"
-            type="project"
-            isActive={false}
-            onClick={() => {}}
-            onEdit={() => {}}
-            onDelete={() => {}}
-          />
+
+          {projects.map(
+            (project) =>
+              project.name !== "Unassigned" && (
+                <FilterButton
+                  id={project.id}
+                  key={project.id}
+                  icon="domain_verification"
+                  label={project.name}
+                  type="project"
+                  isActive={activeFilter === project.id}
+                  onClick={() => {
+                    setActiveFilter(`${project.id}`);
+                  }}
+                  onEdit={() => {}}
+                  onDelete={() => {}}
+                />
+              )
+          )}
         </nav>
         <main className="main-content">
-          {tasks.map((task) => (
+          {filteredTasks.map((task) => (
             <TaskCard
               key={task.id}
               id={task.id}

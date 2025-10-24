@@ -15,10 +15,18 @@
         {
           "title": "ImplementProjects",
           "description": "The todo list should have projects or separate lists of todos. When a user first opens the app, there should be some sort of ‘default’ project to which all of their todos are put. Users should be able to create new projects and choose which project their todos go into.",
-          "dueDate": "2025-10-23",
+          "dueDate": "2025-10-24",
           "priority": "Medium",
           "done": true,
           "id": "87029186-7302-4e12-918e-e51f5573b43e"
+        },
+        {
+          "title": "Remove Code Suggestions from VSCode",
+          "description": "In order to really learn to code on my own, I need to code in an editor that doesn't have code suggestions",
+          "dueDate": "2025-10-27",
+          "priority": "Medium",
+          "done": true,
+          "id": "87029186-7302-4e12-918e-e51f5573b43f"
         }
       ]
     },

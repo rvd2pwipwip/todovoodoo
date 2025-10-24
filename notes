@@ -1,0 +1,21 @@
+Step 1: Create Filtered Data
+Where: In your App component, after your state declarations but before the JSX return
+What: Create a new array of tasks based on the current activeFilter
+Think about: What JavaScript array method creates a new array based on conditions?
+
+Step 2: Define Filter Logic
+For each filter type, think about:
+"all": Which tasks should show? (probably all of them)
+"today": How do you check if a task's dueDate is today?
+"7days": How do you check if a task is due within 7 days?
+
+Step 3: Use Filtered Data in Render
+What: Instead of using tasks in your .map(), use your filtered array
+Where: In your JSX where you currently have {tasks.map(...)}
+
+Key Questions to Guide You:
+Where should the filtering logic go? (During render, before JSX)
+How do you compare dates in JavaScript?
+What happens when activeFilter changes? (Component re-renders, filtering logic runs again)
+Your mission: Head to VSCode and tackle creating that filtered array!
+When you're ready for review or get stuck, come back and show me what you've built!

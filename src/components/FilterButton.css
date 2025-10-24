@@ -38,8 +38,8 @@ nav button > .project-actions {
 }
 
 /* Show actions on hover OR keyboard focus */
-nav button:hover > .project-actions,
-nav button:focus-within > .project-actions {
+/* nav button:focus-within > .project-actions { */
+nav button:hover > .project-actions {
   opacity: 1;
   visibility: visible;
 }

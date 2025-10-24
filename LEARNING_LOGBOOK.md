@@ -516,4 +516,71 @@ function App() {
 
 ---
 
+## Step 10: Implementing Task Filtering with Derived State
+
+**What I Learned**: How to implement filtering logic using derived state, date utilities, and conditional rendering in React
+
+**Filtering Implementation**:
+
+- **Mastered derived state pattern** - created `filteredTasks` as calculated value, not useState
+- **Implemented time-based filtering** for "all", "today", and "7days" filters
+- **Reused existing date utilities** from vanilla JS project for consistent date handling
+- **Fixed array-in-array bug** by understanding data structure flow
+
+**Key Learning Moments**:
+
+- **Initial mistake**: Tried to use `setTasks(filteredTasks)` to modify state
+- **Breakthrough**: Understood that filtering should create a new view, not modify original data
+- **Bug discovery**: Caught `push()` vs direct assignment difference
+- **Solution**: Used derived state pattern with simple conditional logic
+
+**Filtering Logic Implementation**:
+
+```jsx
+let filteredTasks = [];
+
+if (activeFilter === "all") {
+  filteredTasks = tasks; // Show all tasks
+}
+
+if (activeFilter === "today") {
+  filteredTasks = tasks.filter((t) => t.dueDate === getTodayDateFormatted());
+}
+
+if (activeFilter === "7days") {
+  const { start, end } = getWeekDateRange();
+  filteredTasks = tasks.filter((t) => t.dueDate >= start && t.dueDate <= end);
+}
+```
+
+**Date Utilities Integration**:
+
+- **`getTodayDateFormatted()`**: Returns today's date in YYYY-MM-DD format for exact matching
+- **`getWeekDateRange()`**: Returns start/end dates for 7-day range filtering
+- **Consistent date handling**: Reused proven utilities from vanilla JS implementation
+
+**React Concepts Mastered**:
+
+- **Derived State**: Computing values from existing state instead of storing everything
+- **Data Flow**: Understanding when to use state vs calculated values
+- **Array Methods**: Proper use of `.filter()` for conditional array creation
+- **Conditional Logic**: Clean if-statement structure for different filter types
+
+**Debugging Skills Developed**:
+
+- **Array Structure Understanding**: Recognizing nested array problems
+- **Data Flow Tracing**: Following data from state through filtering to rendering
+- **React DevTools Usage**: Inspecting component state and props
+- **Console Debugging**: Using console.log to understand data transformations
+
+**Performance Benefits**:
+
+- **Efficient Re-rendering**: Only recalculates when `activeFilter` or `tasks` change
+- **No Unnecessary State**: Avoided storing filtered data in state
+- **Clean Component Logic**: Filtering logic contained in render cycle
+
+**Key Concept**: Derived state is a powerful React pattern - calculate what you need from existing state rather than storing everything. This keeps components efficient and data flow predictable.
+
+---
+
 _Next steps will be documented after implementation..._
