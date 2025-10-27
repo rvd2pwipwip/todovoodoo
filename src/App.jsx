@@ -7,21 +7,26 @@ import { getTodayDateFormatted, getWeekDateRange } from "./utils/dateUtils.js";
 function App() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [projects] = useState(todoData.projects);
-  const [tasks] = useState(todoData.projects[0].tasks);
+
+  let tasks = [];
+  projects.forEach((p) => {
+    tasks.push(...p.tasks);
+  });
 
   let filteredTasks = [];
 
   if (activeFilter === "all") {
     filteredTasks = tasks;
-  }
-
-  if (activeFilter === "today") {
+  } else if (activeFilter === "today") {
     filteredTasks = tasks.filter((t) => t.dueDate === getTodayDateFormatted());
-  }
-
-  if (activeFilter === "7days") {
+  } else if (activeFilter === "7days") {
     const { start, end } = getWeekDateRange();
     filteredTasks = tasks.filter((t) => t.dueDate >= start && t.dueDate <= end);
+  } else {
+    const project = projects.find((p) => p.id === activeFilter);
+    if (project) {
+      filteredTasks = [...project.tasks];
+    }
   }
 
   return (

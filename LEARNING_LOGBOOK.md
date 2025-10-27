@@ -583,4 +583,80 @@ if (activeFilter === "7days") {
 
 ---
 
+## Step 11: Implementing Project-Specific Filtering and JavaScript Scope Understanding
+
+**What I Learned**: How to extend filtering logic for project-specific filtering and understand JavaScript variable scope in complex expressions
+
+**Project Filtering Implementation**:
+
+- **Extended existing filtering logic** to handle project ID-based filtering
+- **Refactored multiple if statements** to cleaner else-if chain structure
+- **Implemented project lookup** using `.find()` method to locate specific projects
+- **Added project task extraction** to display tasks from selected projects only
+
+**JavaScript Scope Learning Breakthrough**:
+
+- **Discovered scope boundaries** - variables in arrow functions don't exist outside them
+- **Understanding function scope**: `(p) => p.id === activeFilter` creates `p` only inside the arrow function
+- **Fixed scope issue** by capturing `.find()` result in outer scope variable
+- **Learned variable lifetime** - temporary variables get "thrown away" after function execution
+
+**Filtering Logic Evolution**:
+
+```jsx
+// Before: Multiple independent if statements
+if (activeFilter === "all") { ... }
+if (activeFilter === "today") { ... }
+if (activeFilter === "7days") { ... }
+if (activeFilter !== "all" && activeFilter !== "today" && activeFilter !== "7days") { ... }
+
+// After: Clean else-if chain
+if (activeFilter === "all") {
+  filteredTasks = tasks;
+} else if (activeFilter === "today") {
+  filteredTasks = tasks.filter((t) => t.dueDate === getTodayDateFormatted());
+} else if (activeFilter === "7days") {
+  const { start, end } = getWeekDateRange();
+  filteredTasks = tasks.filter((t) => t.dueDate >= start && t.dueDate <= end);
+} else {
+  // Must be a project ID
+  const foundProject = projects.find((p) => p.id === activeFilter);
+  if (foundProject) {
+    filteredTasks = [...foundProject.tasks];
+  }
+}
+```
+
+**Key Debugging Process**:
+
+- **Initial error**: `filteredTasks = [...p.tasks]` where `p` was undefined
+- **Root cause analysis**: `p` only existed inside `.find()` arrow function scope
+- **Solution discovery**: Capture `.find()` result in variable accessible in outer scope
+- **Code improvement**: Refactored to else-if structure for better logic flow
+
+**JavaScript Scope Concepts Mastered**:
+
+- **Function scope boundaries**: Each `{}` creates new scope
+- **Arrow function parameters**: Variables like `p` only exist within the function
+- **Variable capture pattern**: Store function results to use in broader scope
+- **Scope visualization**: Understanding where variables "live" in code
+
+**Code Quality Improvements**:
+
+- **Eliminated redundant conditions**: No need to check all time filters in project condition
+- **Improved efficiency**: else-if stops checking once match is found
+- **Enhanced maintainability**: Easy to add new filter types without updating project logic
+- **Better readability**: Clear decision tree structure
+
+**React Patterns Reinforced**:
+
+- **Derived state consistency**: Project filtering follows same pattern as time filtering
+- **State-driven UI updates**: Changing `activeFilter` triggers automatic re-render
+- **Data transformation**: Converting project selection into filtered task display
+- **Component isolation**: Filtering logic contained within App component
+
+**Key Concept**: JavaScript scope determines where variables can be accessed. Understanding scope boundaries is crucial for debugging and writing correct code, especially with array methods and arrow functions.
+
+---
+
 _Next steps will be documented after implementation..._
