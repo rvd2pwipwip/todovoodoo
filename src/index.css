@@ -218,6 +218,11 @@ table {
   overflow: hidden; /* Make sure .content doesn't scroll for #tasklist overflow */
 }
 
+#main-header {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 /*********************************************************/
 /* Projects Nav*/
 /*********************************************************/

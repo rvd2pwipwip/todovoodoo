@@ -659,4 +659,92 @@ if (activeFilter === "all") {
 
 ---
 
+## Step 12: Creating Reusable Button Component with Advanced CSS Selectors
+
+**What I Learned**: How to build flexible, reusable UI components with advanced CSS attribute selectors and understand CSS targeting in React
+
+**Button Component Architecture**:
+- **Flexible prop system** supporting multiple variants, icons, and states
+- **Advanced CSS targeting** using attribute selectors instead of class names
+- **Icon integration** with Material Icons for start, end, and icon-only buttons
+- **Accessibility features** with proper focus states and disabled handling
+
+**Component Implementation**:
+```jsx
+const Button = ({
+  id = "pill",
+  variant = "primary", 
+  disabled,
+  fullWidth = false,
+  startIcon,
+  endIcon,
+  iconOnly,
+  onClick,
+  children,
+  type = "button"
+}) => {
+  return (
+    <button
+      id={id}
+      variant={variant}
+      onClick={onClick}
+      type={type}
+      data-start-icon={startIcon ? true : undefined}
+      data-end-icon={endIcon ? true : undefined}
+      data-icon-only={iconOnly ? true : undefined}
+      data-disabled={disabled ? true : undefined}
+    >
+      {startIcon && <span className="material-icons-rounded">{startIcon}</span>}
+      {!iconOnly && <span>{children}</span>}
+      {endIcon && <span className="material-icons-rounded">{endIcon}</span>}
+    </button>
+  );
+};
+```
+
+**Advanced CSS Selector Techniques**:
+- **Attribute selectors**: `button[variant="secondary"]` for variant styling
+- **Data attributes**: `button[data-disabled]` for state-based styling  
+- **ID selectors**: `button[id*="pill"]` for base button styling
+- **Conditional attributes**: Only adding data attributes when needed
+
+**CSS Targeting Discovery**:
+- **React components render HTML elements** - CSS targets the actual `<button>`, not `<Button>`
+- **Component names are invisible to CSS** - styling must target rendered HTML
+- **Attribute-based styling** provides clean, semantic CSS organization
+- **Data attributes** offer flexible state-based styling without class manipulation
+
+**Button Variants Implemented**:
+- **Primary**: Default accent color background
+- **Secondary**: Outlined style with transparent background
+- **Danger**: High-priority color for destructive actions
+- **Ghost**: Minimal style with hover effects
+
+**Icon Integration Features**:
+- **Start icons**: Icons before text content
+- **End icons**: Icons after text content  
+- **Icon-only**: Just icon without text
+- **Dynamic padding**: Adjusts based on icon presence
+
+**Accessibility Implementation**:
+- **Focus-visible**: Modern focus styling for keyboard navigation
+- **Disabled state**: Proper pointer-events and visual feedback
+- **User-select**: Prevents text selection for better UX
+- **Semantic HTML**: Uses actual button elements
+
+**CSS Architecture Insights**:
+- **Attribute selectors** provide cleaner CSS than class-based styling
+- **Data attributes** separate state from presentation classes
+- **CSS custom properties** enable consistent theming across variants
+- **Conditional rendering** in JSX controls icon display logic
+
+**Key Learning Moment**:
+**Problem**: CSS styles applied to `<button>` but not `<Button>` component
+**Solution**: Understanding that React components render HTML elements, and CSS targets the rendered output
+**Insight**: Component names exist only in React - CSS sees the actual DOM elements
+
+**Key Concept**: React components are abstractions that render real HTML elements. CSS styling must target the rendered HTML, not the component names. Advanced CSS selectors like attribute selectors provide powerful, semantic styling approaches.
+
+---
+
 _Next steps will be documented after implementation..._
