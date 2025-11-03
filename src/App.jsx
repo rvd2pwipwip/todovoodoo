@@ -1,19 +1,47 @@
-import { useState } from "react";
-import todoData from "../todoDB.json";
+import { useState, useEffect } from "react";
 import TaskCard from "./components/TaskCard";
 import FilterButton from "./components/FilterButton";
 import Button from "./components/Button";
 import { getTodayDateFormatted, getWeekDateRange } from "./utils/dateUtils.js";
+import {
+  loadProjectsFromLocalStorage,
+  saveProjectsToLocalStorage,
+} from "./services/projectManager.js";
 
 function App() {
   const [activeFilter, setActiveFilter] = useState("All");
-  const [projects] = useState(todoData.projects);
+  const [projects, setProjects] = useState([]);
 
-  let tasks = [];
-  projects.forEach((p) => {
-    tasks.push(...p.tasks);
-  });
+  useEffect(() => {
+    async function loadData() {
+      try {
+        // When the app first mounts, check localStorage.
+        const storedProjects = loadProjectsFromLocalStorage();
+        // If there's data, use it.
+        if (storedProjects) {
+          setProjects(storedProjects);
+          // If not, use the JSON file and save it to localStorage.
+        } else {
+          const response = await fetch("todoDB.json");
+          if (!response.ok) {
+            throw new Error(
+              "Network response was not ok " + response.statusText
+            );
+          }
+          const data = await response.json();
+          console.log("Fetched data:", data);
+          saveProjectsToLocalStorage(data); // Save fetched data to LocalStorage
+          console.log("Called saveProjectsToLocalStorage");
+          setProjects(data.projects);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    loadData();
+  }, []);
 
+  const tasks = projects.flatMap((project) => project.tasks);
   let filteredTasks = [];
 
   if (activeFilter === "All") {

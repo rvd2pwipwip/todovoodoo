@@ -26,18 +26,18 @@ button[data-icon-only] {
   padding: 1rem 1rem 1rem 1rem;
 }
 
-button[variant="secondary"] {
+button[data-variant="secondary"] {
   background: none;
   outline: solid 2px rgba(0, 0, 0, 0.3);
   outline-offset: -2px;
   color: var(--on-background);
 }
 
-button[variant="danger"] {
+button[data-variant="danger"] {
   background: var(--high-priority);
 }
 
-button[variant="ghost"] {
+button[data-variant="ghost"] {
   background: none;
   color: var(--on-background);
 }

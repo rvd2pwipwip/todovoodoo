@@ -3,7 +3,7 @@ import "./Button.css";
 const Button = ({
   id = "pill",
   variant = "primary",
-  disabled,
+  disabled = false,
   fullWidth = false,
   startIcon,
   endIcon,
@@ -15,12 +15,10 @@ const Button = ({
   return (
     <button
       id={id}
-      variant={variant}
       onClick={onClick}
       type={type}
-      fullWidth={fullWidth}
-      disabled={disabled}
-      iconOnly={iconOnly}
+      data-variant={variant}
+      data-full-width={fullWidth}
       data-end-icon={endIcon ? true : undefined}
       data-start-icon={startIcon ? true : undefined}
       data-icon-only={iconOnly ? true : undefined}
